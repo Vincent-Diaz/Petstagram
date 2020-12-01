@@ -2,7 +2,9 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const PostSchema = new Schema({
-  text: { type: String, required: true },
+  title:{type:String},
+  imageUrl:{type:String, require:true},
+  caption: { type: String, required: true },
   postCreated: { type: Date, default: Date.now }
 });
 
