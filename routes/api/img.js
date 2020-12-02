@@ -3,7 +3,7 @@ const db = require("../../models");
 
 //need fs to allow for removal of posts
 const fs = require('fs');
-const imgController = require("../../controllers/imgController");
+const postController = require("../../controllers/postControllers");
 require('dotenv').config();
 
 //create uploads to hold on to temp files
@@ -20,18 +20,18 @@ cloudinary.config({
 
 //users own posts and creating posts
 router.route("/myPost")
-    .get(imgController.findAll)
-    .post(imgController.create);
+    .get(postController.findAll)
+    .post(postController.create);
 
 //see all posts by a user
 router.route("/:id")
-    .get(imgController.findById)
-    .get(imgController.update)
-    .get(imgController.remove);
+    .get(postController.findById)
+    .get(postController.update)
+    .get(postController.remove);
 
 //reference to img url in mongodb
 router.route('/dbimg')
-    .post(imgController.create);
+    .post(postController.create);
 
 //using multer to organize file data
 router.post("/imgup", upload.single('file'),function(req,res, next){
@@ -43,7 +43,6 @@ router.post("/imgup", upload.single('file'),function(req,res, next){
     .then(function (image) {
       console.log('** file uploaded to Cloudinary service');
       console.dir(image);
-
 
         //save file to temp folder and delete file
       console.log(req.file.path+"\n^^^^^^^^^^^^^^")
