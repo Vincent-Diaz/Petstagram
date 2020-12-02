@@ -9,14 +9,14 @@ function Post( props ) {
         <div className="post">
                 <div className="post__header">
                 <Image className="post__avatar" src={props.profilePic}/>
-                <h3>{props.username}</h3>
+                <h3><a href="/profile">{props.username}</a></h3>
             </div>
            
             {/* header -> avater + username */}
 
             <Image className="post__image" src={props.imageUrl} />
 
-            <h4 className="post__text"><strong>{props.username}</strong> {props.caption}</h4>
+            <h4 className="post__text"><strong><a href="/profile">{props.username}</a></strong> {props.caption}</h4>
         </div>
         </Container>
     )

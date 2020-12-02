@@ -1,7 +1,7 @@
 import React from "react";
 import testPost from "../testPost.json";
-import Post from '../components/Post'
-import Navigation from '../components/Navigation'
+import Post from '../components/Post/Post'
+import Navigation from '../components/Navigation/Navigation'
 
 
 function Home() {
