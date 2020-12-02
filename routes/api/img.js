@@ -44,7 +44,6 @@ router.post("/imgup", upload.single('file'),function(req,res, next){
       console.log('** file uploaded to Cloudinary service');
       console.dir(image);
 
-
         //save file to temp folder and delete file
       console.log(req.file.path+"\n^^^^^^^^^^^^^^")
       fs.unlink(req.file.path, err=>{if(err){console.log(err)}})
