@@ -1,10 +1,10 @@
 
-import React from 'react';
+import React, {useState, useRef} from 'react';
 import {Link} from 'react-router-dom';
-import API from "../utils/API";
+import API from "../utils/API.js";
 import { AUTH_SET_LOGGED_IN } from "../utils/actions";
 import { useStoreContext } from "../utils/GlobalStore";
-import {Container, Row} from "../components/Grid";
+import {Container, Row, Col} from "../components/Grid";
 import Navigation from '../components/Navigation/Navigation'
 function Login() {
     const [showError, setShowError] = useState(false);
