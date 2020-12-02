@@ -2,7 +2,7 @@ import React from 'react';
 import './Post.css';
 import Avatar from 'react-avatar'
 
-function Post( { username, caption, imageUrl} ) {
+function Post( { username, caption, imageUrl } ) {
     return (
         <div className="post">
                 <div className="post__header">
