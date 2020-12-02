@@ -25,4 +25,11 @@
 
 .post__avatar {
     margin-right: 10px;
+    height: 100px;
+    width: 100px
+}
+
+#Logo {
+    font-family: 'Nerko One', cursive;
+
 }
