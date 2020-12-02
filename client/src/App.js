@@ -1,7 +1,41 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
+import Post from './Post';
+import InstagramEmbed from 'react-instagram-embed';
 
 function App() {
+  const [posts, setPosts] = useState([
+    {
+      username: "AmazingDaniel",
+      caption: "First Post",
+      imageUrl: "https://i.pinimg.com/474x/67/0e/96/670e96325d91d2e4a1cb633706f640d8.jpg"
+    },
+    {
+      username: "ZackAttack",
+      caption: "Maxine Is the dopest",
+      imageUrl: "https://i.pinimg.com/originals/70/c6/04/70c604590b79d5c5783f135441247f8f.jpg"
+    },
+    {
+      username: "SarahAloeVera",
+      caption: "#CokeCola Baby Baby",
+      imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUsLyoPy4VNXhNForqagy6YU9xqzNVo46NwA&usqp=CAU"
+    }
+  ]);
+
+  // useEffect -> runs a piece of code based on a specfic condition
+
+  useEffect(() => {
+    //this is where the code runs
+    //db.collection("posts").onSnapshot(snapshot =>{
+    // "every time a new post is added, this code fires..."  
+    //setPosts(snapshot.docs.map(doc => {
+    //   id: doc.id,
+    //   post: doc.data()
+    // }))
+    //})
+  }, []);
+
+
   return (
     <div className="App">
       <div className="app__header">
@@ -13,10 +47,32 @@ function App() {
       </div>
 
       <h1>Programming</h1>
+      <div className="app__posts">
+        <div className="app__postsLeft">
+          {
+            posts.map(post => ( //add({id, }) once the db is up
+              <Post username={post.username} caption={post.caption} imageUrl={post.imageUrl} /> //add key={id} after db id up
+            ))
+          }
+        </div>
+        <div className="app__postsRight">
+          <InstagramEmbed
+          url='https://instagr.am/p/Zw9o4/'
+          maxWidth={320}
+          hideCaption={false}
+          containerTagName='div'
+          protocol=''
+          injectScript
+          onLoading={() => { }}
+          onSuccess={() => { }}
+          onAfterRender={() => { }}
+          onFailure={() => { }}
+        />
+        </div>
+        
+      </div>
       
 
-      {/* Posts */}
-      {/* Posts */}
     </div>
   );
 }
