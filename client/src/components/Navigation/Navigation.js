@@ -2,7 +2,7 @@ import React from "react";
 import { Navbar, Dropdown, DropdownButton } from 'react-bootstrap';
 import Container from 'react-bootstrap/Container'
 import Image from 'react-bootstrap/Image'
-import './Post.css';
+import '../Post/Post.css'
 
 
 
