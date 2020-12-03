@@ -25,6 +25,7 @@ function Signup() {
         };
         API.signup(signupData).then(response => {
             const { email } = response.data;
+            console.log(response.data)
             dispatch({
                 type: AUTH_SET_LOGGED_IN,
                 data: {
@@ -63,7 +64,7 @@ function Signup() {
                         <button type="submit" className="btn btn-default">Sign Up</button>
                     </form>
                     <br />
-                    <p>Or log in <Link to="/login">here</Link></p>
+                    <p>Or log in <Link to="/">here</Link></p>
                 </Col>
             </Row>
         </Container>
