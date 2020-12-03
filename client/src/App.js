@@ -4,7 +4,6 @@ import {
   BrowserRouter as Router,
   Route,
   Switch,
-  Link,
   Redirect,
 } from "react-router-dom";
 import Home from "./pages/Home.js";
@@ -48,15 +47,15 @@ function App() {
           {!state.userLoggedIn ? (
             // These routes are only avaialable to LOGGED OUT users
             <>
-              <Route exact path="/login" component={Login} />
+              <Route exact path="/" component={Login} />
               <Route exact path="/signup" component={Signup} />
             </>
           ) : (
             // These routes are only available to LOGGED IN users
             <>
-              <Route exact path={["/login", "/signup"]}>
+              <Route exact path={["/", "/signup"]}>
                 {/* If you are logged in, going to the login/signup page will take you to the members page */}
-                <Redirect to="/home" />
+                {/* <Redirect to="/home" /> */}
               </Route>
               <Route exact path="/home" component={Home}/>
               <Route exact path="/profile" component={Profile} />
@@ -65,7 +64,7 @@ function App() {
           {/* These routes are ALWAYS available */}
           <Route>
             {/*If none of the other pages match, redirect them to the main page */}
-            <Redirect to="/login" />
+            <Redirect to="/" />
           </Route>
         </Switch>
       </div>
