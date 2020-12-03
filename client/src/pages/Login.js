@@ -1,13 +1,15 @@
-import React, { useRef, useState } from "react"
-import { Link } from "react-router-dom";
-import API from "../utils/API";
+
+import React, {useState, useRef} from 'react';
+import {Link} from 'react-router-dom';
+import API from "../utils/API.js";
 import { AUTH_SET_LOGGED_IN } from "../utils/actions";
 import { useStoreContext } from "../utils/GlobalStore";
-import {Container, Row} from "../components/Grid";
-
+import {Container, Row, Col} from "../components/Grid";
+import Navigation from '../components/Navigation/Navigation'
 function Login() {
     const [showError, setShowError] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
+
 
     const emailRef = useRef();
     const passwordRef = useRef();
@@ -35,6 +37,7 @@ function Login() {
     }
 
     return <div>
+      <Navigation />
         <Container>
             <Row>
                 <Col size="col-md-6 col-md-offset-3">
