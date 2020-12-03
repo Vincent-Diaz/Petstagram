@@ -1,7 +1,7 @@
 const express = require("express");
 const session = require("express-session");
 const mongoose = require("mongoose");
-const MongoStore = require("connect-mongo")(session);
+// const MongoStore = require("connect-mongo")(session);
 
 const passport = require("./config/passport")
 const auth = require("./routes/api/auth")
@@ -27,7 +27,7 @@ app.use(
   secret:"very secret this is",
   resave: false,
   saveUninitialized:true,
-  store: new MongoStore({mongooseConnection:mongoose.connection})
+  // store: new MongoStore({mongooseConnection:mongoose.connection})
   })
 );
 
