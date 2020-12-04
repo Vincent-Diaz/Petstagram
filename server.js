@@ -1,15 +1,11 @@
+require('dotenv').config();
 const express = require("express");
 const session = require("express-session");
 const mongoose = require("mongoose");
-// const MongoStore = require("connect-mongo")(session);
-
 const passport = require("./config/passport")
-const auth = require("./routes/api/auth")
-
 const routes = require("./routes");
-const app = express();
 const PORT = process.env.PORT || 3001;
-require('dotenv').config();
+const app = express();
 
 // Define middleware here
 app.use(express.urlencoded({ extended: false }));
@@ -18,9 +14,6 @@ app.use(express.json());
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
-// Add routes, both API and view
-app.use(routes);
-app.use(auth)
 
 // Express session
 app.use(
@@ -28,13 +21,15 @@ app.use(
   secret:"very secret this is",
   resave: false,
   saveUninitialized:true,
-  // store: new MongoStore({mongooseConnection:mongoose.connection})
   })
 );
 
 //Passport middleware
 app.use(passport.initialize());
 app.use(passport.session());
+
+// Add routes, both API and view
+app.use(routes);
 
 // Connect to the Mongo DB
 mongoose.connect(

@@ -7,12 +7,14 @@ const { Provider } = StoreContext;
 // This is a PURE function that takes in an action and creates the next state
 // whenever a new action is "dispatched", the GlobalStore will update and the whole application will re-render.
 const reducer = (state, action) => {
+    console.log(action.payload)
     switch(action.type){
         case AUTH_SET_LOGGED_IN:
             return {
                 ...state,
                 userLoggedIn: true,
-                email: action.data.email
+                email: action.payload.email,
+                userName: action.payload.userName
             }
         case AUTH_SET_LOGGED_OUT:
             return {

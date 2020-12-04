@@ -2,24 +2,9 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const bcrypt = require('bcryptjs');
 
-// const ThirdPartyProviderSchema = new Schema({
-//   provider_name: {
-//     type: String,
-//     default:null
-//   }, 
-//   provider_id:{
-//     type:String,
-//     default:null
-//   },
-//   provider_data:{
-//     type:{},
-//     default:null
-//   }
-// });
-
 const UserSchema = new Schema(
   {
-    username: { 
+    userName: { 
       type: String, 
       required: true,
       trim:true,
@@ -37,27 +22,7 @@ const UserSchema = new Schema(
         trim:true,
         validate: [({ length }) => length >= 6, "Password should be longer."]
     },
-    // referral_code:{
-    //   type:String,
-    //   default: function(){
-    //     let hash=0;
-    //     for (let i=0; i< this.email.length; i++){
-    //       hash = this.email.charCodeAt(i) + ((hash<<5)-hash);        
-    //     }
-    //     let res = (hash & 0x00ffffff).toString(16).toUpperCase();
-    //     return "00000".substring(0, 6 - res.length) + res;
-    //   }
-    // },
-    // referred_by:{
-    //   type:String,
-    //   default:null
-    // },
-    // third_party_auth: [ThirdPartyProviderSchema],
-    // userCreated: { 
-    //     type: Date, 
-    //     default: Date.now 
-    // },
-    
+  
     posts: [
         {
           type: Schema.Types.ObjectId,
@@ -65,20 +30,16 @@ const UserSchema = new Schema(
         }
       ]
   },
-  // {strict:false}
 );
 
-UserSchema.methods.comparePassword = function comparePassword(password, callback) {
-  bcrypt.compare(password, this.password, callback);
-};
-UserSchema.pre('save', function saveHook(next) {
+UserSchema.pre('save', function (next) {
   const user = this;
 
   // proceed further only if the password is modified or the user is new
   if (!user.isModified('password')) return next();
 
 
-  return bcrypt.genSalt((saltError, salt) => {
+  return bcrypt.genSalt(10, (saltError, salt) => {
     if (saltError) { return next(saltError); }
 
     return bcrypt.hash(user.password, salt, (hashError, hash) => {
@@ -92,6 +53,9 @@ UserSchema.pre('save', function saveHook(next) {
   });
 });
 
+UserSchema.methods.comparePassword = function comparePassword(password) {
+  return bcrypt.compareSync (password, this.password)
+};
 const User = mongoose.model("User", UserSchema);
 
 module.exports = User;
