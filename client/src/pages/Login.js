@@ -1,7 +1,7 @@
 
 import React, {useState, useRef} from 'react';
 import {Link} from 'react-router-dom';
-import API from "../utils/API.js";
+import API from "../utils/api.js";
 import { AUTH_SET_LOGGED_IN } from "../utils/actions";
 import { useStoreContext } from "../utils/GlobalStore";
 import {Container, Row, Col} from "../components/Grid";

@@ -23,12 +23,13 @@ function Home() {
     const post2 = testPost[2]
 
     useEffect(() => {
-        axios.get('/api/img/myPost')
-            .then(res => {
-                setImgs(res)
-            })
-            .catch(err => console.log(err))
-    }, [])
+        console.log(imgs)
+        // axios.get('/api/img/myPost')
+        //     .then(res => {
+        //         setImgs(res)
+        //     })
+        //     .catch(err => console.log(err))
+    }, [imgs])
 
     ////// track change of file input and capture data
     const handleImageChnage = (event) => {
@@ -58,13 +59,21 @@ function Home() {
         formData.append('caption', caption);
 
         for (var p of formData) {
-            console.log(p);
+            // console.log(p);
         }
         axios.post('/api/img/imgup', formData).then((response) => {
+            console.log("hello peeps")
+            axios.get('/api/img/myPost')
+            .then(res => {
+                setImgs(res.data)
+                console.log(res)
+            })
+            .catch(err => console.log(err))
             console.log(response)
             setUp(response.data)
             // setRedirect(true)
         })
+    
     }
 
     //////////add url caption and title to db
@@ -114,9 +123,9 @@ function Home() {
                         )
                     }):<div></div>}
                 </div>
-                <Post {...post0} />
+                {/* <Post {...post0} />
                 <Post {...post1} />
-                <Post {...post2} />
+                <Post {...post2} /> */}
             </div>
         </>
     )

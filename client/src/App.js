@@ -6,7 +6,7 @@ import Login from './pages/Login';
 import Profile from './pages/Profile';
 import Signup from './pages/Signup';
 import { useStoreContext } from './utils/GlobalStore';
-import API from './utils/API';
+import API from './utils/api';
 import { AUTH_SET_LOGGED_IN, AUTH_SET_LOGGED_OUT } from './utils/actions';
 function App() {
   // Our provider is setup in index.js so we can use the GlobalStore here easily.

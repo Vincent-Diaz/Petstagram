@@ -8,7 +8,7 @@ import '../Post/Post.css'
 
 function Navigation(props) {
   const [state] = useStoreContext();
-  console.log(state)
+  // console.log(state)
   return (
     <>
       <Navbar bg="dark" variant="dark" style={{ border: "1px solid black", marginBottom: '50px' }}>
