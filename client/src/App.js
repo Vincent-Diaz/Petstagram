@@ -1,7 +1,7 @@
 import './App.css';
 import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
-import Home from './pages/Home.js';
+import Home from './pages/home.js';
 import Login from './pages/Login';
 import Profile from './pages/Profile';
 import Signup from './pages/Signup';
@@ -41,8 +41,8 @@ function App() {
         {!state.userLoggedIn ? (
           // These routes are only avaialable to LOGGED OUT users
           <>
-            <Route exact path={["/","/home"]} component={Home} />
-            <Route exact path="/login" component={Login} />
+            <Route exact path={["/","/login"]} component={Login} />
+            {/* <Route exact path="/login" component={Login} /> */}
             <Route exact path="/signup" component={Signup} />
           </>
         ) : (
