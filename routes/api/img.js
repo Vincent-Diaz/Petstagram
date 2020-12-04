@@ -48,6 +48,7 @@ router.post("/imgup", upload.single('file'),function(req,res, next){
       console.log(req.file.path+"\n^^^^^^^^^^^^^^")
       fs.unlink(req.file.path, err=>{if(err){console.log(err)}})
       // res.json(image.url)
+      // console.log(image.url)
       const obj = {
         title:req.body.name,
         caption: req.body.caption,
