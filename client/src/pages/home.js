@@ -76,7 +76,7 @@ function Home() {
         }
 
         axios.post('api/img/dbimg', pObj).then(res => {
-            console.log(res)
+            // console.log(res)
             // setRedirect(true)
         })
     }
@@ -99,7 +99,7 @@ function Home() {
                         {/* <input type="text" className="form-control" id="exampleInputPassword1" /> */}
                         <textarea id='caption' className="form-control" name='caption' type='text' placeholder="Caption" value={caption}onChange={handleDataChange} />
                     </div>
-                    <button type="submit" className="btn btn-primary" id="uploadBtn" onClick={handleFile, addPic}>Upload</button>
+                    <button type="submit" className="btn btn-primary" id="uploadBtn" onClick={handleFile}>Upload</button>
                 </form>
 
 
