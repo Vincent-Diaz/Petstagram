@@ -12,7 +12,8 @@ const reducer = (state, action) => {
             return {
                 ...state,
                 userLoggedIn: true,
-                email: action.data.email
+                email: action.payload.userData.email,
+                userName: action.payload.userData.userName
             }
         case AUTH_SET_LOGGED_OUT:
             return {
