@@ -3,16 +3,13 @@ const db = require('../../models');
 const passport = require('../../config/passport');
 const router = require('express').Router();
 
-// module.exports = function (app) {
-// console.log({ router });
-// Route for logging in
-
 router.post('/login', passport.authenticate('local'), function (req, res) {
+  console.log("req", req);
   res.json(req.user);
 });
 
 router.post('/signup', function (req, res) {
-  console.log("req.body", req.body)
+  console.log("req.body",req.body)
   db.User.create({
     userName: req.body.userName,
     email: req.body.email,
@@ -23,6 +20,7 @@ router.post('/signup', function (req, res) {
       res.redirect(307, '/api/login');
     })
     .catch(function (err) {
+      console.log("err", err)
       res.status(401).json(err);
     });
 });
@@ -34,7 +32,7 @@ router.get('/logout', function (req, res) {
 });
 
 // Route for getting some data about our user to be used client side
-router.get('/api/user_data', function (req, res) {
+router.get('/user_data', function (req, res) {
   console.log(req.user)
   if (!req.user) {
     // The user is not logged in, send back an empty object
@@ -45,6 +43,7 @@ router.get('/api/user_data', function (req, res) {
     res.json({
       email: req.user.email,
       id: req.user.id,
+      userName:req.user.userName
     });
   }
 });

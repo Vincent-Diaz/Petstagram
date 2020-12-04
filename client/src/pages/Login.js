@@ -5,7 +5,7 @@ import API from "../utils/API.js";
 import { AUTH_SET_LOGGED_IN } from "../utils/actions";
 import { useStoreContext } from "../utils/GlobalStore";
 import {Container, Row, Col} from "../components/Grid";
-import Navigation from '../components/Navigation/Navigation'
+
 function Login() {
     const [showError, setShowError] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
@@ -22,12 +22,14 @@ function Login() {
             password: passwordRef.current.value
         };
         API.login(loginData).then(response => {
+            console.log(response.data)
             setShowError(false);
-            const { email } = response.data;
+            const { email, userName } = response.data;
             dispatch({
                 type: AUTH_SET_LOGGED_IN,
-                data: {
-                    email
+                payload: {
+                    email,
+                    userName
                 }
             });
         }).catch(err => {
@@ -36,8 +38,7 @@ function Login() {
         })
     }
 
-    return <div>
-      <Navigation />
+    return <div> 
         <Container>
             <Row>
                 <Col size="col-md-6 col-md-offset-3">

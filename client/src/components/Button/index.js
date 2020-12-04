@@ -3,7 +3,7 @@ import "./style.css";
 
 function Button(props) {
   return (
-  <button className={`btn btn-${props.type}`} {...props}>{props.children}
+  <button type ="submit" className={`btn btn-${props.type}`} {...props}>{props.children}
     </button>
   );
 }
