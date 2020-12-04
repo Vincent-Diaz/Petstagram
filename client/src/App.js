@@ -13,55 +13,49 @@ function App() {
   // Something we want to do at the beginning of the application is check if the user is logged in or not, if the user is, we'll
   // dispatch an action
   const [state, dispatch] = useStoreContext();
-  // useEffect(() => {
-  //   // Try getting our user-data, if the user is logged in, we will update our GlobalStore to refelct that
-  //   API.checkUserInfo()
-  //     .then((response) => {
-  //       const { email } = response.data;
-  //       // dispatch({
-  //       //   type: AUTH_SET_LOGGED_IN,
-  //       //   payload:{
-  //       //     email
-  //       //   }
-  //       // });
-  //     })
-  //     .catch((err) => {
-  //       // Not able to be logged in, leave us logged out
-  //       console.log('error', err);
-  //       dispatch({
-  //         type: AUTH_SET_LOGGED_OUT
-  //       });
-  //     });
-  // }, []);
+  useEffect(() => {
+    // Try getting our user-data, if the user is logged in, we will update our GlobalStore to refelct that
+    API.checkUserInfo()
+      .then((response) => {
+        const { email } = response.data;
+        dispatch({
+          type: AUTH_SET_LOGGED_IN,
+          payload:{
+            email
+          }
+        });
+      })
+      .catch((err) => {
+        // Not able to be logged in, leave us logged out
+        console.log('error', err);
+        dispatch({
+          type: AUTH_SET_LOGGED_OUT
+        });
+      });
+  }, []);
   console.log(state.userLoggedIn)
   return (
     <Router>
       <div>
+      <Switch>
         {!state.userLoggedIn ? (
           // These routes are only avaialable to LOGGED OUT users
-          <Switch>
-            <Route exact path="/" component={Login} />
+          <>
+            <Route exact path={["/","/home"]} component={Home} />
+            <Route exact path="/login" component={Login} />
             <Route exact path="/signup" component={Signup} />
-            <Route>
-              {/*If none of the other pages match, redirect them to the main page */}
-              <Redirect to="/" />
-            </Route>
-          </Switch>
+          </>
         ) : (
-          // These routes are only available to LOGGED IN users
-          <Switch>
-            {/* <Route exact path={['/', '/signup']}> */}
-              {/* If you are logged in, going to the login/signup page will take you to the members page */}
-              <Redirect exact from="/" to="/home" />
-            {/* </Route> */}
-            <Route exact path="/home" component={Home} />
-            <Route exact path="/profile" component={Profile} />
-            <Route>
-              {/*If none of the other pages match, redirect them to the main page */}
-              <Redirect to="/" />
-            </Route>
-          </Switch>
+            <>
+              <Route exact path={["/","/home"]} component={Home} />
+              <Route exact path="/profile" component={Profile} />
+              <Route>
+                {/*If none of the other pages match, redirect them to the main page */}
+                <Redirect to="/home" />
+              </Route> 
+            </>
         )}
+        </Switch>
       </div>
     </Router>
   );
