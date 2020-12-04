@@ -47,7 +47,16 @@ router.post("/imgup", upload.single('file'),function(req,res, next){
         //save file to temp folder and delete file
       console.log(req.file.path+"\n^^^^^^^^^^^^^^")
       fs.unlink(req.file.path, err=>{if(err){console.log(err)}})
-      res.json(image.url)
+      // res.json(image.url)
+      const obj = {
+        title:req.body.name,
+        caption: req.body.caption,
+        imageUrl:image.url,
+      }
+
+      let result = postController.create(obj)
+      console.log(result)
+      res.json(result)
     })
     .then(function () {
       console.log('img saved');
