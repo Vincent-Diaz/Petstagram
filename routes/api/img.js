@@ -13,9 +13,9 @@ const upload = multer({ dest: 'uploads/' });
 //import cloudinary
 const cloudinary = require('cloudinary').v2;
 cloudinary.config({
-    name: process.env.CLOUDINARY_NAME,
-    apikey: process.env.CLOUDINARY_APIKEY,
-    apisecret: process.env.CLOUDINARY_APISECRET
+    cloud_name: process.env.CLOUDINARY_NAME,
+    api_key: process.env.CLOUDINARY_APIKEY,
+    api_secret: process.env.CLOUDINARY_APISECRET
 });
 
 //users own posts and creating posts
