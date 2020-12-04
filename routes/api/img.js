@@ -13,9 +13,9 @@ const upload = multer({ dest: 'uploads/' });
 //import cloudinary
 const cloudinary = require('cloudinary').v2;
 cloudinary.config({
-    name: process.env.CLOUDINARY_NAME,
-    apikey: process.env.CLOUDINARY_APIKEY,
-    apisecret: process.env.CLOUDINARY_APISECRET
+    cloud_name: process.env.CLOUDINARY_NAME,
+    api_key: process.env.CLOUDINARY_APIKEY,
+    api_secret: process.env.CLOUDINARY_APISECRET
 });
 
 //users own posts and creating posts
@@ -47,7 +47,16 @@ router.post("/imgup", upload.single('file'),function(req,res, next){
         //save file to temp folder and delete file
       console.log(req.file.path+"\n^^^^^^^^^^^^^^")
       fs.unlink(req.file.path, err=>{if(err){console.log(err)}})
-      res.json(image.url)
+      // res.json(image.url)
+      const obj = {
+        title:req.body.name,
+        caption: req.body.caption,
+        imageUrl:image.url,
+      }
+
+      let result = postController.create(obj)
+      console.log(result)
+      res.json(result)
     })
     .then(function () {
       console.log('img saved');

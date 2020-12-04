@@ -16,3 +16,18 @@
   border-bottom: 1px solid lightgray;
   object-fit: contain;
 }
+
+.form-group {
+  margin: 0 auto;
+  max-width: 25%;
+}
+
+#uploadBtn {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+}
+
+#imageUp {
+  display: none;
+}

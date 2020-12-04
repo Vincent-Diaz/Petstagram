@@ -14,11 +14,16 @@ module.exports = {
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     },
-    create: function (req, res) {
+    create: function (data) {
+        console.log(data)
         db.Post
-            .create(req.body)
-            .then(dbModel => res.json(dbModel))
-            .catch(err => res.status(422).json(err));
+            .create(data)
+            .then(dbModel => {
+                console.log(dbModel)
+                return dbModel
+            })
+            .catch(err =>  {
+                return err})
     },
     update: function (req, res) {
         db.Post
