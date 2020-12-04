@@ -24,12 +24,13 @@ function Signup() {
             password: passwordRef.current.value
         };
         API.signup(signupData).then(response => {
-            // const { email } = response.data;
+            const { email, userName } = response.data;
             console.log(response)
             dispatch({
                 type: AUTH_SET_LOGGED_IN,
                 payload: {
-                    userData: signupData
+                    email,
+                    userName
                 }
             });
         }).catch(err => {

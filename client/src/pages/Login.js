@@ -22,8 +22,9 @@ function Login() {
             password: passwordRef.current.value
         };
         API.login(loginData).then(response => {
+            console.log(response.data)
             setShowError(false);
-            const { email, userName } = response.payload;
+            const { email, userName } = response.data;
             dispatch({
                 type: AUTH_SET_LOGGED_IN,
                 payload: {
