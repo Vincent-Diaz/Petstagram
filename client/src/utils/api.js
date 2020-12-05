@@ -13,5 +13,8 @@ export default {
     },
     logout: () => {
         return axios.get("/logout");
-    }
+    },
+    findFriendsbyUserName: (userName) =>{
+        return axios.get("/api/", userName)
+    },
 }
