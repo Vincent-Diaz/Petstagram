@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 import testPost from "../testPost.json";
 import Post from '../components/Post/Post'
-import Navigation from '../components/Navigation/Navigation'
 import Icon from 'react-icons-kit'
 import {cameraRetro} from 'react-icons-kit/fa/cameraRetro'
+import {Container} from 'react-bootstrap';
+import Navigation from '../components/Navigation';
 
 
 function Home() {
@@ -90,14 +91,14 @@ function Home() {
         })
     }
     return (
-        <>
             <div>
+                <Navigation/>
+                <Link to="/test">Test</Link>
             {/* {redirect?<Redirect push to='/home'/>:<div></div>} */}
-                <Navigation  {...post0}/>
                 <form>
                     <div className="form-group">
                         <label htmlFor="imageUp"><h2>Upload Image</h2>
-                        <Icon icon={cameraRetro} size={40}/>
+                        <Icon icon={cameraRetro} size={40}/> Click camera icon to choose file
                         {/* <input id='name' name='name' type='text' placeholder="Name" value={name} onChange={handleDataChange} /> */}
                             <input id="imageUp" type={'file'} accept="image/*" name="file" encType="multipart/form-data" onChange={handleImageChnage} />
                         </label>
@@ -127,7 +128,6 @@ function Home() {
                 <Post {...post1} />
                 <Post {...post2} /> */}
             </div>
-        </>
     )
 }
 
