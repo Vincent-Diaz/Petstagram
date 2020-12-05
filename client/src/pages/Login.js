@@ -5,6 +5,7 @@ import API from "../utils/api";
 import { AUTH_SET_LOGGED_IN } from "../utils/actions";
 import { useStoreContext } from "../utils/GlobalStore";
 import {Container, Row, Col} from "../components/Grid";
+import { Navbar} from 'react-bootstrap';
 
 function Login() {
     const [showError, setShowError] = useState(false);
@@ -39,6 +40,11 @@ function Login() {
     }
 
     return <div> 
+        <Navbar style={{ background:'linear-gradient(to right,#009FFF, #c471ed, #f64f59, #f3b853 90%)', marginBottom: '50px' }}>
+            <Navbar.Brand href="/">
+            <h2 id="logo" style={{ color: 'white', marginRight:15}}>Petstagram</h2>
+            </Navbar.Brand>
+        </Navbar>
         <Container>
             <Row>
                 <Col size="col-md-6 col-md-offset-3">
@@ -56,7 +62,7 @@ function Login() {
                             <span className="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
                             <span className="sr-only">Error:</span> <span className="msg">{errorMessage}</span>
                         </div>
-                        <button type="submit" className="btn btn-default">Login</button>
+                        <button type="submit" className="btn btn-primary">Login</button>
                     </form>
                     <br />
                     <p>Or Sign up  <Link to="/signup">here</Link></p>

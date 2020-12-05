@@ -1,7 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
 #logo, 
 .logout,
 .welcome{
     font-family: 'Lobster', cursive;
+}
+
+#logo{
+    font-style: italic;
 }
 

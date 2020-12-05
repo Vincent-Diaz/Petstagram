@@ -1,11 +1,14 @@
-// const db = require("../models")
+const db = require("../models")
 
-// module.exports = {
-//     findByUserName: function (req, res) {
-//         console.log("uers",req)
-//         // db.User
-//         //     .findOne({userName:req})
-//         //     .then(dbModel => res.json(dbModel))
-//         //     .catch(err => res.status(422).json(err));
-//     }
-// };
+module.exports = {
+    findByUserName: function (req, res) {
+        // console.log("server side user",req.params.username)
+        db.User
+            .findOne({userName:req.params.username})
+            .then(dbModel => {
+                res.json(dbModel);
+                // console.log("user found", dbModel)
+            })
+            .catch(err => res.status(422).json(err));
+    }
+};

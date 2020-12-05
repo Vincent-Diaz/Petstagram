@@ -5,7 +5,7 @@ import Home from './pages/home.js';
 import Login from './pages/Login';
 import Profile from './pages/Profile';
 import Signup from './pages/Signup';
-import Navigation from './components/Navigation';
+import Test from "./pages/Test"
 import { useStoreContext } from './utils/GlobalStore';
 import API from './utils/api';
 import { AUTH_SET_LOGGED_IN, AUTH_SET_LOGGED_OUT } from './utils/actions';
@@ -38,7 +38,6 @@ function App() {
   return (
     <Router>
       <div>
-      <Navigation/>
       <Switch>
         {!state.userLoggedIn ? (
           // These routes are only avaialable to LOGGED OUT users
@@ -46,11 +45,13 @@ function App() {
             <Route exact path={["/","/login"]} component={Login} />
             {/* <Route exact path="/login" component={Login} /> */}
             <Route exact path="/signup" component={Signup} />
+            
           </>
         ) : (
             <>
               <Route exact path={["/","/home"]} component={Home} />
               <Route exact path="/profile" component={Profile} />
+              <Route exact path="/test" component={Test} />
               <Route>
                 {/*If none of the other pages match, redirect them to the main page */}
                 <Redirect to="/home" />

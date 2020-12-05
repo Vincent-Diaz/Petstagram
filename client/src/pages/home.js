@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 import testPost from "../testPost.json";
 import Post from '../components/Post/Post'
 import Icon from 'react-icons-kit'
 import {cameraRetro} from 'react-icons-kit/fa/cameraRetro'
 import {Container} from 'react-bootstrap';
+import Navigation from '../components/Navigation';
 
 
 function Home() {
@@ -91,6 +92,8 @@ function Home() {
     }
     return (
             <div>
+                <Navigation/>
+                <Link to="/test">Test</Link>
             {/* {redirect?<Redirect push to='/home'/>:<div></div>} */}
                 <form>
                     <div className="form-group">

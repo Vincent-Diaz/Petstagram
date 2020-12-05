@@ -15,6 +15,6 @@ export default {
         return axios.get("/logout");
     },
     findFriendsbyUserName: (userName) =>{
-        return axios.get("/api/", userName)
+        return axios.get("/api/userlist/" + userName)
     },
 }

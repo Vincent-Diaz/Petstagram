@@ -7,11 +7,13 @@ import testPost from "../testPost.json";
 import Bio from '../components/Bio/bio';
 import Avatar from 'react-avatar';
 import { useStoreContext } from '../utils/GlobalStore';
+import Navigation from '../components/Navigation';
 
 function Profile() {
     const [state] = useStoreContext();
     return (
         <div>
+            <Navigation/>
             <Container>
                 <Row style={{display:'flex',alignItems:'center' }}>
                     <Col size="md-2">

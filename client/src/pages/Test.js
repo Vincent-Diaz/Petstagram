@@ -1,44 +1,53 @@
-import React, {useState} from "react";
+import React, { useState, useRef } from "react";
 // import testPost from "../testPost.json";
 // import Post from '../components/Post/Post'
 // import Navigation from '../components/Navigation/Navigation'
+// import Button from '../components/Button';
 import API from "../utils/api";
 
 function Test() {
-    const [searchUserName, setSearchUserName] = useState("");
-    const [result, setResult] = useState([]);
+  const [searchFriend, setSearchFriend] = useState("");
+  const [result, setResult] = useState([]);
+  const handleInputChange = (event) => {
+    const { value } = event.target;
+    setSearchFriend(value);
+  };
 
-    const handleInputChange =(event) =>{
-        setSearchUserName(event.target.value);
-    }
-     
-    const handleFormSubmit = event => {
-        event.preventDefault();
-        API.findFriendsbyUserName(searchUserName)
-        .then(res => setResult(res.data))
-        .then(console.log("hey"));
-    }
+  const handleSearch = (event) => {
+    event.preventDefault();
+    console.log("search term", searchFriend);
+    API.findFriendsbyUserName(searchFriend)
+       .then((res) => {
+        // console.log(res.data);
+        setResult(res.data)
+        console.log("result", result)
+        console.log("submited");
+        })
+        .catch((err) => console.log(err));
+  };
 
-    
-    return (
-        <>
-            <h1>hello</h1>
-            <form onClick={handleFormSubmit}>
-            <input  onChange={handleInputChange} value={searchUserName}placeholder='username' />
-                <button type="submit">Search</button>
-            </form>
-            <div>
-            {/* {result[0].userName} */}
-            </div>
+  const renderFriendList = () =>{
 
-            {/* {result.length ? (
-                <ul>
-                    <li>{result[0].userName}</li>
-                </ul>)
-                : (<h3>No such username </h3>)} */}
-        </>
-        )
-   
+  }
+  return (
+    <>
+      <h4>Find friends</h4>
+      <form onSubmit={handleSearch}>
+        <input
+          onChange={handleInputChange}
+          placeholder="username"
+          value={searchFriend}
+        />
+      </form>
+
+      <div>
+        <h4></h4>
+        <button type="submit" className="btn btn-success">
+          Follow
+        </button>
+      </div>
+    </>
+  );
 }
 
 export default Test;
