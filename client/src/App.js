@@ -5,6 +5,7 @@ import Home from './pages/home.js';
 import Login from './pages/Login';
 import Profile from './pages/Profile';
 import Signup from './pages/Signup';
+import Navigation from './components/Navigation';
 import { useStoreContext } from './utils/GlobalStore';
 import API from './utils/api';
 import { AUTH_SET_LOGGED_IN, AUTH_SET_LOGGED_OUT } from './utils/actions';
@@ -37,6 +38,7 @@ function App() {
   return (
     <Router>
       <div>
+      <Navigation/>
       <Switch>
         {!state.userLoggedIn ? (
           // These routes are only avaialable to LOGGED OUT users
