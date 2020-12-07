@@ -17,4 +17,7 @@ export default {
     findFriendsbyUserName: (userName) =>{
         return axios.get("/api/userlist/" + userName)
     },
+    followingPeople: function(name) {
+        return axios.post("/api/followinglist", name);
+    }
 }
