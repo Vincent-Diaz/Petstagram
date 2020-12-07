@@ -9,6 +9,8 @@ import Test from "./pages/Test"
 import { useStoreContext } from './utils/GlobalStore';
 import API from './utils/api';
 import { AUTH_SET_LOGGED_IN, AUTH_SET_LOGGED_OUT } from './utils/actions';
+// import Navigation from './components/Navigation';
+import Upload from './pages/upload';
 function App() {
   // Our provider is setup in index.js so we can use the GlobalStore here easily.
   // Something we want to do at the beginning of the application is check if the user is logged in or not, if the user is, we'll
@@ -34,10 +36,11 @@ function App() {
         });
       });
   }, []);
-  console.log(state.userLoggedIn)
+  // console.log(state.userLoggedIn)
   return (
     <Router>
       <div>
+        {/* <Navigation /> */}
       <Switch>
         {!state.userLoggedIn ? (
           // These routes are only avaialable to LOGGED OUT users
@@ -47,10 +50,12 @@ function App() {
             <Route exact path="/signup" component={Signup} />
             
           </>
-        ) : (
+        ) : ( 
             <>
               <Route exact path={["/","/home"]} component={Home} />
               <Route exact path="/profile" component={Profile} />
+              <Route exact path="/upload" component={Upload} />
+              <Route exact path="/logout" component={Login} />
               <Route exact path="/test" component={Test} />
               <Route>
                 {/*If none of the other pages match, redirect them to the main page */}
