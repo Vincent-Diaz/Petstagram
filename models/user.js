@@ -28,7 +28,14 @@ const UserSchema = new Schema(
           type: Schema.Types.ObjectId,
           ref: "Post"
         }
-      ]
+      ],
+    
+    following:[
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Following"
+      }
+    ],
   },
 );
 
