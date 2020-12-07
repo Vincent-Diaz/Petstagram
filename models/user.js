@@ -28,11 +28,19 @@ const UserSchema = new Schema(
     },
 
     posts: [
+        {
+          type: Schema.Types.ObjectId,
+          ref: "Post"
+        }
+      ],
+    
+    following:[
       {
         type: Schema.Types.ObjectId,
-        ref: "Post"
+        ref: "Following"
       }
-    ]
+    ],
+
   },
 );
 
