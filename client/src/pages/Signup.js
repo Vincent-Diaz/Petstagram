@@ -45,8 +45,8 @@ function Signup() {
             </Navbar.Brand>
         </Navbar>
         <Container>
-            <Row>
-                <Col size="col-md-6 col-md-offset-3">
+            <Row className="mycard">
+                <Col size="col-md-6 col-md-offset-3" className='auth-card'>
                     <h2>Sign Up Form</h2>
                     <form className="signup" onSubmit={handleSignup}>
                         <div className="form-group">
