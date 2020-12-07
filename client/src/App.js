@@ -9,15 +9,11 @@ import Test from "./pages/Test"
 import { useStoreContext } from './utils/GlobalStore';
 import API from './utils/api';
 import { AUTH_SET_LOGGED_IN, AUTH_SET_LOGGED_OUT } from './utils/actions';
-// import Navigation from './components/Navigation';
 import Upload from './pages/upload';
 function App() {
-  // Our provider is setup in index.js so we can use the GlobalStore here easily.
-  // Something we want to do at the beginning of the application is check if the user is logged in or not, if the user is, we'll
-  // dispatch an action
+
   const [state, dispatch] = useStoreContext();
   useEffect(() => {
-    // Try getting our user-data, if the user is logged in, we will update our GlobalStore to refelct that
     API.checkUserInfo()
       .then((response) => {
         const { email } = response.data;
@@ -29,14 +25,13 @@ function App() {
         });
       })
       .catch((err) => {
-        // Not able to be logged in, leave us logged out
         console.log('error', err);
         dispatch({
           type: AUTH_SET_LOGGED_OUT
         });
       });
   }, []);
-  // console.log(state.userLoggedIn)
+  
   return (
     <Router>
       <div>
