@@ -1,18 +1,46 @@
-* {
-  margin: 0;
+@import url('https://fonts.googleapis.com/css2?family=Grand+Hotel&display=swap');
+
+a{
+    color: black !important;
 }
 
-.app {
-  background-color: #fafafa;
+.brand-logo, h2{
+    font-family: 'Grand Hotel', cursive;
 }
 
-.app__posts {
-  padding: 20px;
+.mycard {
+    margin-top: 30px;
 }
 
-.app__headerImage {
-  background-color:  white;
-  padding: 20px;
-  border-bottom: 1px solid lightgray;
-  object-fit: contain;
+.auth-card{
+    padding: 20px;
+    text-align: center;
+    max-width: 400px;
+    margin:10px auto;
+}
+
+.gallery{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.item {
+    width: 30%;
+}
+
+.home{
+    margin: 25px auto
+}
+
+.home-card {
+    max-width: 500px;
+    height: max-content;
+    margin: 25px auto;
+}
+
+#toast-container{
+    top:30px;
+    right:20px;
+    left:auto;
 }
