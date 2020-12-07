@@ -4,31 +4,35 @@ const bcrypt = require('bcryptjs');
 
 const UserSchema = new Schema(
   {
-    userName: { 
-      type: String, 
+    id: {
+      type: String
+    },
+    userName: {
+      id: { type: String },
+      type: String,
       required: true,
-      trim:true,
-      unique:true
-      },
-    email: { 
-        type: String, 
-        required: true,
-        match:[/.+@.+\..+/, 'Please enter a valid email address'],
-        unique:true
+      trim: true,
+      unique: true
     },
-    password: { 
-        type: String, 
-        required: true,
-        trim:true,
-        validate: [({ length }) => length >= 6, "Password should be longer."]
+    email: {
+      type: String,
+      required: true,
+      match: [/.+@.+\..+/, 'Please enter a valid email address'],
+      unique: true
     },
-  
+    password: {
+      type: String,
+      required: true,
+      trim: true,
+      validate: [({ length }) => length >= 6, "Password should be longer."]
+    },
+
     posts: [
-        {
-          type: Schema.Types.ObjectId,
-          ref: "Post"
-        }
-      ]
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Post"
+      }
+    ]
   },
 );
 
@@ -54,7 +58,7 @@ UserSchema.pre('save', function (next) {
 });
 
 UserSchema.methods.comparePassword = function comparePassword(password) {
-  return bcrypt.compareSync (password, this.password)
+  return bcrypt.compareSync(password, this.password)
 };
 const User = mongoose.model("User", UserSchema);
 
