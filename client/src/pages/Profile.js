@@ -1,24 +1,26 @@
 import React from 'react';
 
 import { Row, Col, Container} from 'react-bootstrap';
-
-import ImageBlock from '../components/ImageBlock/ImageBlock';
+import { Link } from 'react-router-dom';
+// import ImageBlock from '../components/ImageBlock/ImageBlock';
 import testPost from "../testPost.json";
 import Bio from '../components/Bio/bio';
 import Avatar from 'react-avatar';
 import { useStoreContext } from '../utils/GlobalStore';
-import Navigation from '../components/Navigation';
+import Navigation from '../components/Navigation'
+
 
 function Profile() {
     const [state] = useStoreContext();
     return (
         <div>
-            <Navigation/>
+            <Navigation />
             <Container>
                 <Row style={{display:'flex',alignItems:'center' }}>
                     <Col size="md-2">
                      <Avatar facebookId="100008343750912" size="150" />
                      <h4> {state.userName} </h4>
+                     <Link to="/upload" type="submit" className="btn btn-primary" id="profileBtn" >Upload </Link>
                     </Col>
                     <Col size="md-10">
                         <p><strong>Followers: </strong>number of followers here</p>

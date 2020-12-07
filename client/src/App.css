@@ -17,7 +17,7 @@
   object-fit: contain;
 }
 
-.form-group {
+#uploadForm {
   margin: 0 auto;
   max-width: 25%;
 }
@@ -30,4 +30,9 @@
 
 #imageUp {
   display: none;
+}
+
+#profileBtn {
+  max-width: 25%;
+ 
 }

@@ -15,7 +15,7 @@ module.exports = {
             .catch(err => res.status(422).json(err));
     },
     create: function (data) {
-        console.log(data)
+        // console.log(data)
         db.Post
             .create(data)
             .then(dbModel => {

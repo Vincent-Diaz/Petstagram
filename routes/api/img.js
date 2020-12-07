@@ -56,7 +56,7 @@ router.post("/imgup", upload.single('file'),function(req,res, next){
       }
 
       let result = postController.create(obj)
-      console.log(result)
+      // console.log(result)
       res.json(result)
     })
     .then(function () {
