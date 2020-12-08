@@ -12,7 +12,7 @@ export default {
         return axios.post("/api/login", loginData)
     },
     logout: () => {
-        return axios.get("/api/logout");
+       return axios.get("/api/logout"); 
     },
     findFriendsbyUserName: (userName) =>{
         return axios.get("/api/userlist/" + userName)
