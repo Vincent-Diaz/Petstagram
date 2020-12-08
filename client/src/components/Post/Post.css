@@ -6,18 +6,6 @@
     justify-content: center;
 }
 
-.post__image {
-    width: 100%;
-    object-fit: contain;
-    border-top: 1px solid lightgray;
-    border-bottom: 1px solid lightgray;
-}
-
-.post__text {
-    font-weight: normal;
-    padding: 20px;
-}
-
 .post__header {
     display: flex;
     align-items: center;
@@ -31,4 +19,10 @@
 #Logo {
     font-family: 'Nerko One', cursive;
 
+}
+
+.home-card {
+    max-width: 500px;
+    height: max-content;
+    margin: 25px auto;
 }
