@@ -28,7 +28,7 @@ function Navigation() {
                 window.location.href = '/';
               });
             }}
-            style={{ color: 'white', border: 'none'}}
+            style={{ color: 'white', border: 'none', backgroundColor: 'transparent'}}
             className="logout"
           >
             Log out
