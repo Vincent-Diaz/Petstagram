@@ -17,7 +17,7 @@ function Post(props) {
             <div className="card-content">
                 {/* <i className="material-icons" style={{ color: "red" }}>favorite</i> */}
                 <p>{props.caption}</p>
-                <input type="text" placeholder="add a comment" />
+                {/* <input type="text" placeholder="add a comment" /> */}
             </div>
 
             {/* <h4 className="post__text"><strong><a href="/profile">{props.title}</a></strong> {props.caption}</h4> */}
