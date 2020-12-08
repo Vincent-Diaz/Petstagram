@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import API from "../utils/api";
 import { AUTH_SET_LOGGED_IN } from "../utils/actions";
 import { useStoreContext } from "../utils/GlobalStore";
-// import {Container, Row, Col} from "../components/Grid";
 import { Navbar } from 'react-bootstrap';
 
 function Login() {
