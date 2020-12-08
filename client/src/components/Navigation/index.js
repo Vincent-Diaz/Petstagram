@@ -6,6 +6,7 @@ import Container from 'react-bootstrap/Container';
 import { Icon } from 'react-icons-kit'
 import { home } from 'react-icons-kit/icomoon/home'
 import {user} from 'react-icons-kit/fa/user'
+import api from '../../utils/api';
 import "./style.css"
 
 function Navigation() {
@@ -20,7 +21,18 @@ function Navigation() {
           <p className = "welcome"style={{ color: 'white', marginRight:15}}>Welcome {state.userName} </p>
           <Link to = "/home"><Icon size={32} icon={home} style={{ color: 'white', marginRight:15}}/></Link>
           <Link to="/profile"><Icon size={32} icon={user} style={{ color: 'white', marginRight:15}} /></Link>
-          <Link to="/" style={{ color: 'white'}} className="logout">Logout</Link>
+          <button 
+            className="btn btn-default"
+            onClick={() => {
+              api.logout().then(() => {
+                window.location.href = '/';
+              });
+            }}
+            style={{ color: 'white', border: 'none'}}
+            className="logout"
+          >
+            Log out
+          </button>
         </Container>
       </Navbar>
     </>
