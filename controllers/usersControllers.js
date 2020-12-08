@@ -4,7 +4,7 @@ module.exports = {
     findUserByUserName: function (req, res) {
         // console.log("server side user",req.params.username)
         db.User
-            .findOne({userName:req.params.userName})
+            .find({userName:new RegExp('^'+req.params.username+'.*$', "i")})
             .then(dbModel => {
                 res.json(dbModel);
                 // console.log("user found", dbModel)
