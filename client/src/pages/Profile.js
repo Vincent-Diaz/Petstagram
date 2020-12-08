@@ -1,11 +1,7 @@
 import React from 'react';
-
-import { Row, Col, Container } from 'react-bootstrap';
+import { Row, Col} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-// import ImageBlock from '../components/ImageBlock/ImageBlock';
-import testPost from "../testPost.json";
-import Bio from '../components/Bio/bio';
-import Avatar from 'react-avatar';
+import Avatar from '@material-ui/core/Avatar';
 import { useStoreContext } from '../utils/GlobalStore';
 import Navigation from '../components/Navigation'
 
@@ -16,26 +12,28 @@ function Profile() {
         <div>
             <Navigation />
             <div style={{ maxWidth: '550px', margin:"0px auto" }}>
+                <Row>
                 <Col size="md-2">
-                    <Avatar facebookId="100008343750912" size="150" />
-                    <h4> {state.userName} </h4>
-                    <Link to="/upload" type="submit" className="btn btn-primary" id="profileBtn" >Upload </Link>
+                <Avatar style={{ height: '100px', width: '100px', fontSize: "70px" }} alt={state.userName} src="/static/images/avatar/1.jpg" />
+                    {/* <Link to="/uploadProfilePic"><Avatar facebookId="100008343750912" size="150"/> </Link> */}  
                 </Col>
-                <div>
-                    <div style={{ display: "flex", justifyContent: "space-between", width: "110%" }}>
-                        <h6>40 posts</h6>
-                        <h6>40 followers</h6>
-                        <h6>40 following</h6>
-                    </div>
-                </div>
-            </div>
-            
-            <div className="gallery">
-                <h3>Posts Here</h3>
-                {/* <Avatar githubHandle="sitebase" size={150} round="20px"/> */}
-            </div>
+                <Col size="md-10">
+                    <p><strong>Username: </strong> {state.userName}</p>
+                    <p><strong>Email: </strong> {state.email}</p>
+                </Col>
+                </Row>
+                <Row>
+                    <Col size="md-4">
+                    <h4> {state.userName} </h4>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col size="md-5">
+                    <Link to="/upload" type="submit" className="btn btn-primary" id="profileBtn" >Upload Post</Link>
+                    </Col>
+                </Row>
 
-
+            </div>
         </div>
     )
 };
