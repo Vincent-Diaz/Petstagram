@@ -33,7 +33,7 @@ app.use(routes);
 
 // Connect to the Mongo DB
 mongoose.connect(
-  process.env.MONGODB_URI || "mongodb://localhost/petstagram"
+  process.env.MONGODB_URI || "mongodb://localhost/petstagram", { useNewUrlParser: true }
 );
 
 // Start the API server
