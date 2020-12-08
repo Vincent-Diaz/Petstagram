@@ -22,7 +22,6 @@ function Profile() {
                     <Link to="/upload" type="submit" className="btn btn-primary" id="profileBtn" >Upload </Link>
                 </Col>
                 <div>
-                    <h4>{state.userName}</h4>
                     <div style={{ display: "flex", justifyContent: "space-between", width: "110%" }}>
                         <h6>40 posts</h6>
                         <h6>40 followers</h6>
