@@ -32,6 +32,7 @@ function Profile() {
                     <Link to="/upload" type="submit" className="btn btn-primary" id="profileBtn" >Upload Post</Link>
                     </Col>
                 </Row>
+
             </div>
         </div>
     )
