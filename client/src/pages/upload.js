@@ -46,16 +46,16 @@ function Upload() {
             console.log(p);
         }
         axios.post('/api/img/imgup', formData).then((response) => {
-            const pObj = {
-                // title: title,
-                imageUrl: upImg,
-                caption: caption
-            }
+            // const pObj = {
+            //     // title: title,
+            //     imageUrl: upImg,
+            //     caption: caption
+            // }
     
-            axios.post('api/img/dbimg', pObj).then(res => {
-                // console.log(res)
-                setRedirect(true)
-            })
+            // axios.post('api/img/dbimg', pObj).then(res => {
+            //     // console.log(res)
+            //     setRedirect(true)
+            // })
             console.log(response)
             setUp(response.data)
             setRedirect(true)
