@@ -5,6 +5,7 @@ import useDebounce from "../utils/debounceHook";
 import Post from "../components/Post/Post";
 import Navigation from "../components/Navigation";
 import { Col, Row } from "../components/Grid";
+import Avatar from '@material-ui/core/Avatar';
 
 function Home() {
   const [imgs, setImgs] = useState([]);
@@ -90,28 +91,33 @@ function Home() {
             <div style={{borderStyle:'solid 1 px black'}}>
               <br/>
               {userList.map((user) => (
-                <div key={user._id}>
-                  <h5>{user.userName}</h5>
-                  <button
-                    style={{ marginLeft: 5 }}
-                    type="button"
-                    className=" btn btn-primary btn-sm"
-                    onClick={() => {
-                      followingPeople(searchFriend);
-                      alertMessage(user.userName);
-                    }}
-                  >
-                    Follow
-                  </button>
-                </div>
-              ))}
-            </div>
-          </Col>
-        </Row>
-      </div>
-    </div>
-  );
-
+                 <Row key={user._id}>
+                 <Col size="md-2">
+                   <Avatar alt={user.userName} src="/static/images/avatar/1.jpg" />
+                   <h5>{user.userName}</h5>
+                 </Col>
+                 <Col size="md-2">
+                   <button
+                     style={{ marginLeft: 5 }}
+                     type="button"
+                     className=" btn btn-info btn-sm"
+                     onClick={() => {
+                       followingPeople(searchFriend);
+                       alertMessage(user.userName);
+                     }}
+                   >
+                     Follow
+                   </button>
+                 </Col>
+                 <Col size='md-8'></Col>
+               </Row>
+             ))}
+           </div>
+         </Col>
+       </Row>
+     </div>
+   </div>
+ );
 }
-
 export default Home;
+
